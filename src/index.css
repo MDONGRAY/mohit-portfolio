@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap');
+@import 'devicon/devicon.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Code Pro', monospace;
+  }
+
+  body {
+    @apply bg-dark-900 text-gray-100 font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-800;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-500;
+  }
+
+  /* Offset anchor scroll so fixed navbar doesn't cover section headings */
+  section[id] {
+    scroll-margin-top: 64px;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 via-accent-400 to-primary-300 bg-clip-text text-transparent;
+  }
+
+  /* Section heading style */
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-white mb-4;
+  }
+
+  /* Section wrapper */
+  .section-wrapper {
+    @apply py-20 px-4 md:px-8 max-w-6xl mx-auto;
+  }
+
+  /* Animated gradient bg */
+  .hero-gradient {
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 40%, #12122a 70%, #0a0a0f 100%);
+  }
+
+  /* Button primary */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white
+           bg-gradient-to-r from-primary-600 to-primary-500
+           hover:from-primary-500 hover:to-accent-500
+           transition-all duration-300 shadow-lg shadow-primary-900/40
+           hover:shadow-primary-500/30 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Button outline */
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-primary-300
+           border border-primary-500/40 hover:border-primary-400
+           hover:bg-primary-500/10 hover:text-white
+           transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Skill pill */
+  .skill-pill {
+    @apply px-3 py-1 text-xs font-medium rounded-full
+           bg-primary-900/60 text-primary-300 border border-primary-700/40;
+  }
+
+  /* Timeline line */
+  .timeline-line {
+    @apply absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-accent-500;
+  }
+}
+
+/* Orb glow blobs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Animated gradient background for hero */
+.animated-bg {
+  background: linear-gradient(-45deg, #0a0a0f, #12122a, #1a0533, #0a1a3f);
+  background-size: 400% 400%;
+  animation: gradient-x 10s ease infinite;
+}
+
+/* Grid pattern overlay */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Light mode overrides */
+.light body {
+  @apply bg-gray-50 text-gray-900;
+}
