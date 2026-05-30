@@ -71,19 +71,42 @@ export default function Hero() {
               Open to Work — Full Stack & AI Roles
             </motion.div>
 
-            {/* Name */}
-            <motion.h1
+            {/* Name with mobile profile image */}
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-4"
+              className="mb-4"
             >
-              <span className="text-white">Hi, I'm </span>
-              <br />
-              <span className="gradient-text">Mohit</span>
-              <br />
-              <span className="text-white">Dongray</span>
-            </motion.h1>
+              <div className="flex items-center gap-4">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
+                  <span className="text-white">Hi, I'm </span>
+                  <br />
+                  <span className="gradient-text">Mohit</span>
+                  <br />
+                  <span className="text-white">Dongray</span>
+                </h1>
+
+                {/* Mobile profile image */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.25, duration: 0.6 }}
+                  className="lg:hidden relative w-20 h-20 rounded-full overflow-hidden
+                                  ring-4 ring-primary-500/40 shadow-2xl shadow-primary-900/60 flex-shrink-0"
+                >
+                  <img
+                    src="/profile.jpeg"
+                    alt="Mohit Dongray"
+                    className="w-full h-full object-cover object-top"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.classList.add('fallback-initials');
+                    }}
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
 
             {/* Role pills */}
             <motion.div
